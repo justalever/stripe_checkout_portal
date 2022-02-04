@@ -144,6 +144,8 @@ ActiveRecord::Schema.define(version: 2022_02_04_193648) do
     t.string "customer_id"
     t.integer "user_id", null: false
     t.string "status"
+    t.string "interval"
+    t.string "subscription_id"
     t.datetime "current_period_start", precision: 6
     t.datetime "current_period_end", precision: 6
     t.datetime "created_at", precision: 6, null: false

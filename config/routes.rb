@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     get :pricing
   end
 
+  resources :billings, only: :create
+
   namespace :purchase do
     resources :checkouts
   end
@@ -20,4 +22,5 @@ Rails.application.routes.draw do
   get "success", to: "purchase/checkouts#success"
 
   resources :subscriptions
+  resources :webhooks, only: :create
 end

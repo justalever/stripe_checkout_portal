@@ -42,8 +42,16 @@
     </div>
   <% end %>
 
-  <div class="mb-6">
-    <hr class="mb-6" />
-    <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: button_class(variant: "small", additional_classes: "border") %>
+  <hr class="mb-6" />
+
+  <div class="flex justify-between items-center mb-6">
+    <% if current_user.subscribed? %>
+      <div>
+        <%= button_to "Manage billing", billings_path, data: { turbo: false }, class: button_class(theme: "dark") %>
+      </div>
+    <% end %>
+    <div>
+      <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "underline" %>
+    </div>
   </div>
 <% end %>

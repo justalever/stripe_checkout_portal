@@ -1,0 +1,9 @@
+<h1>Payment attempt failed</h1>
+
+<p>Hi <%= @user.first_name %>,</p>
+
+<p>It looks like your latest automated payment attempt failed</p>
+
+<p>In order to not see a lapse in your subscription we suggest updating your billing information as soon as possible</p>
+
+<p><%= link_to "Update billing information", edit_user_registration_url, target: :_blank %>
