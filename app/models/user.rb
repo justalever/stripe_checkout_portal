@@ -1,7 +1,9 @@
 class User < ApplicationRecord
-pay_customer
+  pay_customer
 
-has_person_name
+  has_person_name
+
+  has_many :subscriptions, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
