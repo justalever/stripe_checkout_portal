@@ -11,15 +11,20 @@
     to our private community.
   </p>
   <div class="grid grid-cols-2 gap-6">
-    <button
-      class="px-3 py-4 bg-teal-600 block w-full text-center rounded font-bold text-white shadow-sm"
-    >
-      Subscribe for $9/mo
-    </button>
-    <button
-      class="px-3 py-4 bg-indigo-600 block w-full text-center rounded font-bold text-white shadow-sm"
-    >
-      Subscribe for $90/yr
-    </button>
+    <% if user_signed_in? %>
+      <%= form_tag purchase_checkouts_path, method: :post, data: { turbo: false } do %>
+        <input type="hidden" name="price_id" value="<%= Rails.application.credentials.dig(:stripe, :pricing, :monthly)%>" />
+        <input type="submit" value="Subscribe for $9/mo" class="px-3 py-4 bg-teal-600 hover:bg-teal-700 block no-underline w-full text-center rounded font-bold text-white shadow-sm cursor-pointer" />
+      <% end %>
+
+      <%= form_tag purchase_checkouts_path, method: :post, data: { turbo: false } do %>
+        <input type="hidden" name="price_id" value="<%= Rails.application.credentials.dig(:stripe, :pricing, :yearly)%>" />
+        <input type="submit" value="Subscribe for $90/yr" class="px-3 py-4 bg-indigo-600 hover:bg-indigo-700 block no-underline w-full text-center rounded font-bold text-white shadow-sm cursor-pointer" />
+      <% end %>
+    <% else %>
+      <%= link_to "Subscribe for $9/mo", new_user_session_path, class:"px-3 py-4 bg-teal-600 hover:bg-teal-700 block no-underline w-full text-center rounded font-bold text-white shadow-sm cursor-pointer" %>
+
+      <%= link_to "Subscribe for $90/yr", new_user_session_path, class:"px-3 py-4 bg-indigo-600 hover:bg-indigo-700 block no-underline w-full text-center rounded font-bold text-white shadow-sm cursor-pointer" %>
+    <% end %>
   </div>
 </div>

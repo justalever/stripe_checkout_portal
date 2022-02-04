@@ -12,4 +12,12 @@ Rails.application.routes.draw do
   scope controller: :static do
     get :pricing
   end
+
+  namespace :purchase do
+    resources :checkouts
+  end
+
+  get "success", to: "purchase/checkouts#success"
+
+  resources :subscriptions
 end
