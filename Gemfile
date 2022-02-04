@@ -70,6 +70,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
 gem "devise", "~> 4.8"
 gem "friendly_id", "~> 5.4", ">= 5.4.2"
 gem "sidekiq", "~> 6.3", ">= 6.3.1"
